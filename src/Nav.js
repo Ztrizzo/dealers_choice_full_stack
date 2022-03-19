@@ -4,7 +4,12 @@ import { Link } from 'react-router-dom';
 
 const Nav = () => {
   return(
-    <Link to='/colors'>All</Link>
+    <nav>
+      <Link to='/colors'>All</Link>
+      <Link to='/selected'>Selected</Link>
+      <Link to='/unselected'>Unselected</Link>
+    </nav>
+    
   )
 }
 

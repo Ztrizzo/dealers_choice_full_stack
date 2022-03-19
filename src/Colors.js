@@ -10,7 +10,7 @@ class Colors extends Component {
   
   render(){
     return(
-      <div>
+      <div id='colors'>
         <ul>
           {this.props.colors.map(color => {
             return <li key={color.id}>{color.name}</li>
