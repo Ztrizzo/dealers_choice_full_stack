@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import {addFavorite} from './store';
+import {addFavorite, deleteColor} from './store';
 
 const Color = (props) => {
   const color = props.colors.find(color => color.id === props.match.params.id * 1);
@@ -13,6 +13,9 @@ const Color = (props) => {
         <button onClick={() => props.addFavorite(color.id)}>
           {color.favorite ? <span>Remove Favorite</span> : <span>Add Favorite</span>}
         </button>
+        <button id='deleteButton' onClick={() => props.delete(color.id)}>
+          X
+        </button>
       </div>
     )
   else{
@@ -23,8 +26,11 @@ const Color = (props) => {
 const mapDispatchToProps = (dispatch, otherProps) => {
   return {
     addFavorite: function (id){
-      console.log(otherProps);
       dispatch(addFavorite(id));
+      otherProps.history.push('/colors');
+    },
+    delete: function(id) {
+      dispatch(deleteColor(id))
       otherProps.history.push('/colors');
     }
   }

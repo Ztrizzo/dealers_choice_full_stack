@@ -6,9 +6,23 @@ import axios from 'axios';
 const LOAD_COLORS = 'LOAD_COLORS';
 const ADD_FAVORITE = 'ADD_FAVOROTE';
 const NEW_COLOR = 'NEW_COLOR';
+const DELETE = 'DELETE';
 
 const initialState = {
   colors: []
+}
+
+export const deleteColor = (id) => {
+  return async(dispatch) => {
+    await axios.delete(`/color/${id}`);
+    const colors = (await axios.get('/colors')).data;
+
+    dispatch({
+      type: DELETE,
+      colors
+    })
+
+  }
 }
 
 export const newColor = (name, history) => {
@@ -58,6 +72,9 @@ const reducer = (state = initialState, action) => {
     return{...state, colors: action.colors}
   }
   else if(action.type === NEW_COLOR){
+    return {...state, colors: action.colors}
+  }
+  else if(action.type === DELETE){
     return {...state, colors: action.colors}
   }
   else

@@ -29,6 +29,17 @@ app.get('/colors', async (req, res, next) => {
   }
 })
 
+app.delete('/color/:id', async (req, res, next) => {
+  try{
+    const color = await Color.findByPk(req.params.id);
+    color.destroy();
+    res.sendStatus(204)
+  }
+  catch(error){
+    next(error);
+  }
+})
+
 app.post('/color', async (req, res, next) => {
   try{
     console.log(req.body)
