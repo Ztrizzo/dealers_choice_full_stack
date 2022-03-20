@@ -1,10 +1,14 @@
 const faker = require('faker');
-const { Sequelize, STRING } = require('sequelize');
+const { Sequelize, STRING, BOOLEAN } = require('sequelize');
 const sequelize = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost/dealers_choice_full_stack');
 
 const Color = sequelize.define('Color', {
   name:{
     type: STRING
+  },
+  favorite:{
+    type: BOOLEAN,
+    defaultValue: false
   }
 })
 

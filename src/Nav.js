@@ -5,9 +5,10 @@ import { Link } from 'react-router-dom';
 const Nav = () => {
   return(
     <nav>
+      <Link to='/create' id='createLink'>Create</Link>
       <Link to='/colors'>All</Link>
-      <Link to='/selected'>Selected</Link>
-      <Link to='/unselected'>Unselected</Link>
+      <Link to='/colors/favorites'>Favorites</Link>
+      <Link to='/colors/nonfavorites'>Non-Favorites</Link>
     </nav>
     
   )

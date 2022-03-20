@@ -5,6 +5,7 @@ import Colors from './Colors';
 import Color from './Color';
 import Nav from './Nav';
 import store from './store';
+import Create from './Create';
 import {HashRouter as Router, Route} from 'react-router-dom';
 import { loadColors } from './store';
 
@@ -19,8 +20,11 @@ class _App extends React.Component{
       <div>
         <h1>Colors</h1>
         <Route path='/' component={Nav}/>
-        <Route path='/colors' component={Colors}/>
+        <Route exact path='/colors' component={Colors}/>
         <Route path='/color/:id' component={Color}/>
+        <Route path='/colors/favorites' component={Colors}/>
+        <Route path='/colors/nonfavorites' component={Colors}/>
+        <Route path='/create' component={Create}/>
       </div>
     )
   }
