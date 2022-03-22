@@ -42,7 +42,6 @@ app.delete('/color/:id', async (req, res, next) => {
 
 app.post('/color', async (req, res, next) => {
   try{
-    console.log(req.body)
     const newColor = await Color.create({
       name: req.body.name
     })
